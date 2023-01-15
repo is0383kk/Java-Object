@@ -228,7 +228,7 @@ yamada.name : 山田
 	// デフォルトコンストラクタ
 	Employee() {}
 	// コンストラクタ
-    	Employee(int id, String na, int sal){
+	Employee(int id, String na, int sal){
 		employeeId = id;
 		name = na;
 		salary = sal;
