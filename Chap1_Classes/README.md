@@ -18,7 +18,7 @@
 - メッセージ：オブジェクトに送られる作業依頼
     - メッセージパッシング：あるオブジェクトから別のオブジェクトにメッセージを送ること
     
-# Javaによるクラスの定義  
+## Javaによるクラスの定義  
 ここでは、Javaを使って、インスタンスの基となるクラスの作成方法を学ぶ。  
 今回は「Employee.java」という名前でEmployeeクラスを作成する。  
 
@@ -64,7 +64,7 @@ public class Employee {
     }
 }
 ```
-# インスタンスの生成を行う
+## インスタンスの生成を行う
 クラスを定義するだけでは、プログラムは動作しない。  
 プログラムを動作させるには、クラスを基にインスタンスを制し絵する必要がある。これをインスタンス化と呼ぶ。  
   
@@ -224,16 +224,6 @@ yamada.name : 山田
 
 - Employee.java
 	- デフォルトコンストラクタのオーバロード
-	```java
-	// デフォルトコンストラクタ
-	Employee() {}
-	// コンストラクタ
-	Employee(int id, String na, int sal){
-		employeeId = id;
-		name = na;
-		salary = sal;
-	}
-	```
 
 ```java
 public class Employee {
@@ -264,150 +254,146 @@ public class Employee {
 
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## thisを使ってインスタンス内でフィールドを初期化する
+以下のようにコンストラクタの引数名をフィールドにし、生成したインスタンスの値を表示すると指定した値で初期化できないという問題がある。  
 ```java
-class Employee{
-    // フィールド
+public class Employee {
+	// フィールド
     int employeeId;    // 社員番号
-    String name        // 氏名
+    String name;        // 氏名
     int salary;        // 基本給
-    double multiplier; // ボーナスの基準月数
+    
+    // デフォルトコンストラクタ
+    Employee() {}
 
     // コンストラクタ
-    Employee(int id. String na, int sal, double mu){
-        employeeID = id;
-        name = na;
-        salaly = sal;
-        multiplier = mu;
+    Employee(int employeeId, String name, int salary){
+    	employeeId = employeeId;
+    	name = name;
+    	salary = salary;
     }
-    // コンストラクタ
-    Employee(){} // 引数のないコンストラクタ（オーバロード）
 
-    // メソッド
-    void work(){
-        System.out.println(name + "は働きました")
-        // フィールドで定義した属性を使える
-    }
-    void calcSalary(){
-        return salary
-    }
 }
-```
 
-## インスタンスの生成  
+```
 ```java
-class Company{
-    public static void main(String[] args){
-        // 引数の無いコンストラクタでインスタンスの作成
-        Employee Yamada = new Employee() // インスタンス化
-        // クラス名:Employee
-        // 変数名:taro
-        // コンストラクタ（クラス名と同じ）
-        // フィールドの利用
-        taro.name = "山田";
-        System.out.println(name);
+public class Constructor {
 
-        // メソッドの利用
-        taro.work();
-        int answer = taro.calcSalary();
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+		Employee yamada = new Employee(200, "山田", 190000);
+		System.out.println("yamada.name : " + yamada.name);
+		System.out.println("yamada.employeeId : " + yamada.employeeId);
+		System.out.println("yamada.name : " + yamada.salary);
+	}
 
-        // 引数のあるコンストラクタでインスタンスの作成
-        Employee Yoshida = new Employee(200, "吉田", 40000, 2.0) // インスタンス化
-    }    
 }
 ```
-- フィールドのデフォルト値  
-    - 数値型は0
-    - boolean型はfalse
-    - char型は'\u0000'
-    - 参照型はnull 
+実行結果は以下のようになり、インスタンスの中身が適切に初期化されない。  
+```
+yamada.name : null
+yamada.employeeId : 0
+yamada.name : 0
 
-## コンストラクタ
-- コンストラクタ:インスタンス生成時に実行される特別なメソッド  
-    - **フィールドの初期化**
-    - 名前はクラス名と同じ
-    - 戻り値は指定できない 
+```
 
-## thisとthis()
-- this:コンストラクタ作成の際、フィールド変数をそのまま使いたいときに便利  
-    - this.フィールド変数名  
-- this()：コンストラクタで定義された属性値をコンストラクタに持ってくることができる  
-    - this()
-    - this(引数1,引数2):引数のあるコンストラクタも呼べる
+---
+
+こうした問題を解決するために「this」というキーワードが用意されている。  
+上記のクラスのコンストラクタに「this.フィールド名」と指定する。  
+  
+- Employee.java
+	- 引数ありコンストラクタに「this」を用いる
+	- 「this」を付けることでその変数がフィールドであることを示す  
 
 ```java
-class Employee{
-    // フィールド
-    int employeeID;    // 社員番号
-    String name        // 氏名
+public class Employee {
+	// フィールド
+    int employeeId;    // 社員番号
+    String name;        // 氏名
     int salary;        // 基本給
-    double multiplier; // ボーナスの基準月数
+    
+    // デフォルトコンストラクタ
+    Employee() {}
 
     // コンストラクタ
-    Employee(){
-        this.employeeID = 12345;
-        this.name = "未登録";
-        this.salaly = 330000;
-        this.multiplier = 200000;
+    Employee(int employeeId, String name, int salary){
+    	this.employeeId = employeeId;
+    	this.name = name;
+    	this.salary = salary;
     }
 
-    // コンストラクタ
-    Employee(int id. String na, int sal, double mu){
-        this.employeeID = EmployeeID;
-        this.name = name;
-        this.salaly = salaly;
-        this.multiplier = multiplier;
-    }
-
-        // コンストラクタ
-    Employee(int employeeId. String name){
-        this(); // 引数のないコンストラクタの属性値がコピーされる
-
-        // 追加で変更したい部分だけ変更  
-        this.employeeID = employeeID; 
-        this.name = name;
-    }
-
-    // メソッド
-    void work(){
-        System.out.println(name + "は働きました")
-        // フィールドで定義した属性を使える
-    }
-    void calcSalary(){
-        return salary
-    }
 }
 ```
+```java
+public class Constructor {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+		Employee yamada = new Employee(200, "山田", 190000);
+		System.out.println("yamada.name : " + yamada.name);
+		System.out.println("yamada.employeeId : " + yamada.employeeId);
+		System.out.println("yamada.name : " + yamada.salary);
+	}
+
+}
+```
+実行結果は以下のようになり、「this」を使うことで適切にインスタンスの値を初期化できていることがわかる
+```
+yamada.name : 山田
+yamada.employeeId : 200
+yamada.name : 190000
+```
+## thisを使って定義済みコンストラクタを呼び出す
+複数のコンストラクタを定義した際、それぞれのコンストラクタで同じ処理を行う場合がある。  
+この場合、「this()」を使うことでコンストラクタ内から別のコンストラクタを呼び出すことができる。  
+  
+- Employee.java：「this()」を使って別のコンストラクタを呼び出す
+```java
+
+public class Employee {
+	// フィールド
+    int employeeId;    // 社員番号
+    String name;        // 氏名
+    int salary;        // 基本給
+    
+    // デフォルトコンストラクタ
+    Employee() {}
+
+    // デフォルトコンストラクタ
+    Employee() {}
+
+    // コンストラクタ
+    Employee(int employeeId){
+    	this();
+    	this.employeeId = employeeId;
+    }
+    
+    Employee(int employeeId, String name, int salary){
+    	this(employeeId);
+    	this.name = name;
+    	this.salary = salary;
+    }
+
+ }
+```
+<strong>※「this()」はコンストラクタ内の先頭行に付ける</strong>
+<strong>※１つのコンストラクタに複数の「this()」は呼び出すことができない</strong>
+<strong>※呼び出すコンストラクタの引数に合わせて形を変える。「Employee(int hoge)」の場合、「this(hoge)」とする。</strong>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 静的メンバ  
 - 静的メンバ：クラス内で共有したいフィールド値にstaticをつける  
