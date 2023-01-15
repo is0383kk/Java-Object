@@ -232,7 +232,7 @@ yamada.name : 山田
 		employeeId = id;
 		name = na;
 		salary = sal;
-    	}
+	}
 	```
 
 ```java
