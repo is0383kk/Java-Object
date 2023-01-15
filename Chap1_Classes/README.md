@@ -61,7 +61,7 @@ public class Employee {
 	}
 	
 	int calcSalary(){
-	return salary;
+	    return salary;
 	}
 }
 ```
@@ -80,9 +80,9 @@ public class Employee {
 public class Company {
 
 	public static void main(String[] args) {
-		// インスタンスの生成
-		Employee taro = new Employee();
-		taro.work();
+	    // インスタンスの生成
+	    Employee taro = new Employee();
+	    taro.work();
 	}
 }
 ```
@@ -186,9 +186,9 @@ public class Employee {
 
 	// コンストラクタ
 	Employee(int id, String na, int sal){
-		employeeId = id;
-		name = na;
-		salary = sal;
+	    employeeId = id;
+            name = na;
+	    salary = sal;
 	}
 
 	// メソッド
@@ -197,7 +197,7 @@ public class Employee {
 	// フィールドで定義した属性を使える
 	}
 	int calcSalary(){
-	return salary;
+	    return salary;
 	}
 }
 ```
@@ -249,7 +249,7 @@ public class Employee {
 	// フィールドで定義した属性を使える
 	}
 	int calcSalary(){
-	return salary;
+	    return salary;
 	}
 }
 
@@ -269,9 +269,9 @@ public class Employee {
 
 	// コンストラクタ
 	Employee(int employeeId, String name, int salary){
-		employeeId = employeeId;
-		name = name;
-		salary = salary;
+	    employeeId = employeeId;
+	    name = name;
+	    salary = salary;
 	}
 
 }
