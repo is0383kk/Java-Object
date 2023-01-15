@@ -217,12 +217,52 @@ public class Constructor {
 yamada.name : 山田
 ```
   
----
-  
+### デフォルトコンストラクタ
 一方で引数のあるコンストラクタを定義すると「new Employee()」がコンパイルエラーとなってしまう。  
-そこで、 <strong>引数のあるコンストラクタを定義する際は、引数のない「デフォルトコンストラクタ」を作成する必要がある。</strong>
+そこで、 <strong>引数のあるコンストラクタを定義する際は、引数のない「デフォルトコンストラクタ」を作成する必要がある。</strong>  
+<strong>※コンストラクタが１つも無いと、引数のないデフォルトコンストラクタがインスタンス生成時に呼び出される。</strong>
 
+- Employee.java
+	- デフォルトコンストラクタのオーバロード
+	```java
+	// デフォルトコンストラクタ
+	Employee() {}
+	// コンストラクタ
+    	Employee(int id, String na, int sal){
+		employeeId = id;
+		name = na;
+		salary = sal;
+    	}
+	```
 
+```java
+public class Employee {
+	// フィールド
+    int employeeId;    // 社員番号
+    String name;        // 氏名
+    int salary;        // 基本給
+    
+    // デフォルトコンストラクタ
+    Employee() {}
+
+    // コンストラクタ
+    Employee(int id, String na, int sal){
+    	employeeId = id;
+    	name = na;
+    	salary = sal;
+    }
+
+    // メソッド
+    void work(){
+        System.out.println(name + "は働きました");
+        // フィールドで定義した属性を使える
+    }
+    int calcSalary(){
+        return salary;
+    }
+}
+
+```
 
 
 
