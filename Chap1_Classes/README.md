@@ -49,19 +49,20 @@
 
 public class Employee {
 	// フィールド
-    int employeeId;    // 社員番号
-    String name;        // 氏名
-    int salary;        // 基本給
-    double multiplier; // ボーナスの基準月数
+	int employeeId;    // 社員番号
+	String name;        // 氏名
+	int salary;        // 基本給
+	double multiplier; // ボーナスの基準月数
 
-    // メソッド
-    void work(){
-        System.out.println(name + "は働きました");
-        // フィールドで定義した属性を使える
-    }
-    int calcSalary(){
-        return salary;
-    }
+	// メソッド
+	void work(){
+	System.out.println(name + "は働きました");
+	// フィールドで定義した属性を使える
+	}
+	
+	int calcSalary(){
+	return salary;
+	}
 }
 ```
 ## インスタンスの生成を行う
@@ -179,25 +180,25 @@ Employee.javaにコンストラクタを追加する
 ```java
 public class Employee {
 	// フィールド
-    int employeeId;    // 社員番号
-    String name;        // 氏名
-    int salary;        // 基本給
-    
-    // コンストラクタ
-    Employee(int id, String na, int sal){
-    	employeeId = id;
-    	name = na;
-    	salary = sal;
-    }
+	int employeeId;    // 社員番号
+	String name;        // 氏名
+	int salary;        // 基本給
 
-    // メソッド
-    void work(){
-        System.out.println(name + "は働きました");
-        // フィールドで定義した属性を使える
-    }
-    int calcSalary(){
-        return salary;
-    }
+	// コンストラクタ
+	Employee(int id, String na, int sal){
+		employeeId = id;
+		name = na;
+		salary = sal;
+	}
+
+	// メソッド
+	void work(){
+	System.out.println(name + "は働きました");
+	// フィールドで定義した属性を使える
+	}
+	int calcSalary(){
+	return salary;
+	}
 }
 ```
 それでは、コンストラクタを利用してフィールドに初期値を代入してインスタンスを生成する
@@ -228,28 +229,28 @@ yamada.name : 山田
 ```java
 public class Employee {
 	// フィールド
-    int employeeId;    // 社員番号
-    String name;        // 氏名
-    int salary;        // 基本給
-    
-    // デフォルトコンストラクタ
-    Employee() {}
+	int employeeId;    // 社員番号
+	String name;        // 氏名
+	int salary;        // 基本給
 
-    // コンストラクタ
-    Employee(int id, String na, int sal){
-    	employeeId = id;
-    	name = na;
-    	salary = sal;
-    }
+	// デフォルトコンストラクタ
+	Employee() {}
 
-    // メソッド
-    void work(){
-        System.out.println(name + "は働きました");
-        // フィールドで定義した属性を使える
-    }
-    int calcSalary(){
-        return salary;
-    }
+	// コンストラクタ
+	Employee(int id, String na, int sal){
+		employeeId = id;
+		name = na;
+		salary = sal;
+	}
+
+	// メソッド
+	void work(){
+	System.out.println(name + "は働きました");
+	// フィールドで定義した属性を使える
+	}
+	int calcSalary(){
+	return salary;
+	}
 }
 
 ```
@@ -259,19 +260,19 @@ public class Employee {
 ```java
 public class Employee {
 	// フィールド
-    int employeeId;    // 社員番号
-    String name;        // 氏名
-    int salary;        // 基本給
-    
-    // デフォルトコンストラクタ
-    Employee() {}
+	int employeeId;    // 社員番号
+	String name;        // 氏名
+	int salary;        // 基本給
 
-    // コンストラクタ
-    Employee(int employeeId, String name, int salary){
-    	employeeId = employeeId;
-    	name = name;
-    	salary = salary;
-    }
+	// デフォルトコンストラクタ
+	Employee() {}
+
+	// コンストラクタ
+	Employee(int employeeId, String name, int salary){
+		employeeId = employeeId;
+		name = name;
+		salary = salary;
+	}
 
 }
 
